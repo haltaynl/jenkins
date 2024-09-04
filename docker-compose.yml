@@ -8,7 +8,7 @@ services:
   app-service:
     build: .
     ports:
-      - "8881:9090"
+      - "8881:8080"
 
     networks:
       - appnet
