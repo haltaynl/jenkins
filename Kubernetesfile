@@ -20,12 +20,12 @@ pipeline {
             echo "${env.GIT_BRANCH}"
         }
     }
-    stage ('Stop Pods') {
-        steps {
-          bat 'kubectl delete -f service.yml'
-          bat 'kubectl delete -f deployment.yml'
-        }
-    }
+//    stage ('Stop Pods') {
+//        steps {
+//          bat 'kubectl delete -f service.yml'
+//          bat 'kubectl delete -f deployment.yml'
+//        }
+//    }
     stage ('Test') {
         steps {
             bat 'mvn -Dmaven.test.failure.ignore=true test'
