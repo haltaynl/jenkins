@@ -22,8 +22,18 @@ pipeline {
     }
     stage ('Stop Pods') {
         steps {
-          bat 'kubectl delete -f service.yml'
-          bat 'kubectl delete -f deployment.yml'
+            script {
+              try {
+                bat 'kubectl delete -f service.yml'
+              } catch (Exception e) {
+                 echo "No service..."
+              }
+              try {
+                bat 'kubectl delete -f deployment.yml'
+              } catch (Exception e) {
+                 echo "No pods running..."
+              }
+            }
        }
    }
     stage ('Test') {
