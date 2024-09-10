@@ -42,7 +42,7 @@ pipeline {
         }
 
     }
-    stage ('Start Containers') {
+    stage ('Start Pods') {
         steps {
             bat 'docker build -t spring-boot-java-h2-image .'
             bat 'kubectl apply -f deployment.yml'
