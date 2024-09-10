@@ -42,12 +42,12 @@ pipeline {
         }
 
     }
-    stage ('Start Pods') {
+    stage ('Start Containers') {
         steps {
-            bat 'docker build -t springboot-k8s-example:1.0 .'
+            bat 'docker build -t spring-boot-java-h2-image .'
             bat 'kubectl apply -f deployment.yml'
             bat 'kubectl apply -f service.yml'
-            bat 'docker-compose up -d --build'
+
         }
     }
 //     stage('Finalize') {
